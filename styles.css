@@ -1,0 +1,162 @@
+
+body {
+    font-family: Garamond, serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: black;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+    border-bottom: 1px solid #bbb; 
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+}
+
+nav a:hover {
+    background-color: white;
+    color: black;
+}
+
+.content-section {
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+}
+
+.div1 {
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+}
+
+#home { background-color: #353f47; }
+#about { background-color: #5e795f; }
+#experience { background-color: #7f6962; }
+#services { background-color: #8a876f; }
+#blog { background-color: #605673; }
+#contact { background-color: #9a7c81; }
+
+#scrollToTopBtn {
+    position: fixed; 
+    bottom: 20px;
+    right: 20px; 
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    background-color: #0f1711;
+    color: white;
+    border: none;
+    z-index: 1001; 
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    #scrollToTopBtn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        bottom: 10px; 
+    }
+}
+
+#scrollToTopBtn:hover {
+    background-color: #111;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+}
+
+#scrollToTopBtn:active {
+    background-color: #555;
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.5s ease-out;
+}
+
+.slide-in.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#footer {
+    background-color: black; 
+    color: white; 
+    text-align: center; 
+    padding: 10px 0 10px; 
+    border-top: 1px solid #bbb; 
+    overflow: hidden; 
+}
+
+#Soul {
+    height: 10px;
+}
+
+#about {
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+#experience{
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+
+#services{
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+
+#blog{
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+
+#contact{
+    min-height: 100vh;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}

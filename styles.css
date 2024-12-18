@@ -1,48 +1,73 @@
+/* ================== CSS Variables ================== */
+:root {
+    --font-family-main: Garamond, serif;
+    --font-family-alt: Verdana, sans-serif;
+    --color-nav-bg: black;
+    --color-nav-text: white;
+    --color-nav-hover-bg: white;
+    --color-nav-hover-text: black;
+    --color-scroll-btn-bg: #0f1711;
+    --color-scroll-btn-hover: #111;
+    --color-scroll-btn-active: #555;
+    --border-light: 1px solid #bbb;
+    --content-padding: 50px;
+    --dot-default: #bbb;
+    --dot-active: #717171;
+}
 
-body {
-    font-family: Garamond, serif;
+/* ================== Global Styles ================== */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: var(--font-family-main);
+    margin: 0;
+}
+
+/* ================== Navigation Bar ================== */
 nav {
-    background-color: black;
+    background-color: var(--color-nav-bg);
     padding: 10px 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     text-align: center;
-    border-bottom: 1px solid #bbb; 
+    border-bottom: var(--border-light);
 }
 
 nav a {
-    color: white;
+    color: var(--color-nav-text);
     text-decoration: none;
     padding: 14px 20px;
     display: inline-block;
 }
 
 nav a:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--color-nav-hover-bg);
+    color: var(--color-nav-hover-text);
 }
 
+/* ================== Content Sections ================== */
 .content-section {
     min-height: 100vh;
-    padding: 50px;
+    padding: var(--content-padding);
     text-align: center;
 }
 
 .div1 {
-    min-height: 100vh;
-    padding: 50px;
-    text-align: center;
     display: flex;
-    justify-content: center; 
-    align-items: center;      
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--content-padding);
+    text-align: center;
 }
 
+/* Section-specific styles */
 #home { background-color: #353f47; }
 #about { background-color: #5e795f; }
 #experience { background-color: #7f6962; }
@@ -50,10 +75,11 @@ nav a:hover {
 #blog { background-color: #605673; }
 #contact { background-color: #9a7c81; }
 
+/* ================== Scroll to Top Button ================== */
 #scrollToTopBtn {
-    position: fixed; 
+    position: fixed;
     bottom: 20px;
-    right: 20px; 
+    right: 20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -62,31 +88,23 @@ nav a:hover {
     text-align: center;
     cursor: pointer;
     display: none;
-    background-color: #0f1711;
-    color: white;
+    background-color: var(--color-scroll-btn-bg);
+    color: var(--color-nav-text);
     border: none;
-    z-index: 1001; 
+    z-index: 1001;
     transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    #scrollToTopBtn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-        bottom: 10px; 
-    }
-}
-
 #scrollToTopBtn:hover {
-    background-color: #111;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    background-color: var(--color-scroll-btn-hover);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #scrollToTopBtn:active {
-    background-color: #555;
+    background-color: var(--color-scroll-btn-active);
 }
 
+/* ================== Slide-in Animation ================== */
 .slide-in {
     opacity: 0;
     transform: translateX(-50px);
@@ -98,65 +116,112 @@ nav a:hover {
     transform: translateX(0);
 }
 
+/* ================== Footer ================== */
 #footer {
-    background-color: black; 
-    color: white; 
-    text-align: center; 
-    padding: 10px 0 10px; 
-    border-top: 1px solid #bbb; 
-    overflow: hidden; 
-}
-
-#Soul {
-    height: 10px;
-}
-
-#about {
-    min-height: 100vh;
-    padding: 50px;
+    background-color: var(--color-nav-bg);
+    color: var(--color-nav-text);
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;    
+    padding: 10px 0;
+    border-top: var(--border-light);
+    overflow: hidden;
 }
 
-#experience{
-    min-height: 100vh;
-    padding: 50px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
+/* ================== Slideshow ================== */
+.slideshow-container {
+    position: relative;
+    margin: auto;
+    border-bottom: var(--border-light);
 }
 
-#services{
-    min-height: 100vh;
-    padding: 50px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
+.mySlides {
+    display: none;
 }
 
-#blog{
-    min-height: 100vh;
-    padding: 50px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
+img {
+    vertical-align: middle;
 }
 
-#contact{
-    min-height: 100vh;
-    padding: 50px;
+/* Next & Previous Buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: var(--color-nav-text);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption Text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align:end;
+}
+
+/* Dots Indicators */
+.dotstyle {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
+    background-color: var(--color-nav-bg);
+    border-bottom: var(--border-light);
+}
+
+.dot {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    margin: 0 2px;
+    background-color: var(--dot-default);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: var(--dot-active);
+}
+
+/* ================== Responsive Design ================== */
+@media (max-width: 768px) {
+    #scrollToTopBtn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        bottom: 10px;
+    }
+}
+
+@media (max-width: 300px) {
+    .prev, .next, .text {
+        font-size: 11px;
+    }
+}
+
+/* ================== Animations ================== */
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
 }

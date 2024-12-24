@@ -225,3 +225,28 @@ img {
     animation-name: fade;
     animation-duration: 1.5s;
 }
+/*------snowflakes-------*/
+
+#snowflakes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #fff;
+    font-size: 20px;
+    user-select: none;
+    z-index: 1000;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}

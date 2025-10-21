@@ -22,9 +22,15 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 48px; /* 為固定導覽列預留空間,讓內容剛好顯示在導覽列下方 */
+}
+
 body {
     font-family: var(--font-family-main);
     margin: 0;
+    padding: 0;
 }
 
 /* ================== Navigation Bar ================== */
@@ -72,8 +78,8 @@ nav a:hover {
 #about { background-color: #5e795f; }
 #experience { background-color: #7f6962; }
 #services { background-color: #8a876f; }
-#blog { background-color: #605673; }
-#contact { background-color: #9a7c81; }
+#song { background-color: #9a7c81; }
+#contact { background-color: #605673; }
 
 /* ================== Scroll to Top Button ================== */
 #scrollToTopBtn {
@@ -104,6 +110,166 @@ nav a:hover {
     background-color: var(--color-scroll-btn-active);
 }
 
+/* ================== Song List Styles ================== */
+.album-section {
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.album-year {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid #667eea;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.song-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+}
+
+.song-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-color: white;
+}
+
+.song-item.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #667eea;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+}
+
+.song-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.song-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.song-info {
+    flex: 1;
+    text-align: left;
+}
+
+.song-info h3 {
+    margin: 0 0 5px 0;
+    color: white;
+    font-size: 18px;
+}
+
+.song-info p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+/* 曲目列表樣式 */
+.track-list {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.track-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-left-color: #667eea;
+    transform: translateX(5px);
+}
+
+.track-item.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-left-color: white;
+}
+
+.track-number {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 25px;
+}
+
+.track-name {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    flex: 1;
+}
+
+.track-item:hover .track-name {
+    color: white;
+}
+
+.track-item:hover .track-number {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#nowPlaying {
+    margin-top: 30px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nowPlaying p {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+}
+
+#currentSong {
+    font-weight: bold;
+    color: #667eea;
+}
+
 /* ================== Slide-in Animation ================== */
 .slide-in {
     opacity: 0;
@@ -130,6 +296,7 @@ nav a:hover {
 .slideshow-container {
     position: relative;
     margin: auto;
+    padding-top: 48px; /* 導覽列實際高度,讓第一張照片從導覽列下方開始 */
     border-bottom: var(--border-light);
 }
 
@@ -164,6 +331,17 @@ img {
 
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number Text (1/3, 2/3, etc.) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 5px 0;
 }
 
 /* Caption Text */
@@ -201,11 +379,91 @@ img {
 
 /* ================== Responsive Design ================== */
 @media (max-width: 768px) {
+    /* 導覽列在手機版的調整 */
+    nav {
+        padding: 8px 0;
+    }
+    
+    nav a {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    /* 調整輪播區的 padding-top */
+    .slideshow-container {
+        padding-top: 44px; /* 手機版導覽列高度 (8px上下padding + 10px*2連結padding + 8px額外) */
+    }
+    
+    /* 調整 scroll-padding-top */
+    html {
+        scroll-padding-top: 44px;
+    }
+    
+    /* 內容區域的 padding 調整 */
+    .content-section, .div1 {
+        padding: 30px 20px;
+    }
+    
     #scrollToTopBtn {
         width: 35px;
         height: 35px;
         font-size: 16px;
         bottom: 10px;
+    }
+    
+    /* 歌曲列表在手機版的調整 */
+    .album-section {
+        padding: 0 10px;
+        margin: 30px auto;
+    }
+    
+    .album-year {
+        font-size: 22px;
+        padding: 8px 15px;
+    }
+    
+    .song-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .song-item {
+        padding: 15px;
+    }
+    
+    .song-item img,
+    .song-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .song-info h3 {
+        font-size: 16px;
+    }
+    
+    .song-info p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 極小螢幕(手機豎屏)的額外調整 */
+    nav a {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+    
+    /* 調整輪播區的 padding-top */
+    .slideshow-container {
+        padding-top: 40px; /* 極小螢幕導覽列高度 */
+    }
+    
+    html {
+        scroll-padding-top: 40px;
+    }
+    
+    .content-section, .div1 {
+        padding: 25px 15px;
     }
 }
 
@@ -225,28 +483,45 @@ img {
     animation-name: fade;
     animation-duration: 1.5s;
 }
-/*------snowflakes-------*/
+/* ================== Snowflakes Effect ================== */
 
 #snowflakes {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     pointer-events: none;
+    overflow: visible;
+    z-index: 9999;
 }
+
 .snowflake {
     position: absolute;
-    top: -10px;
+    top: -50px;
     color: #fff;
     font-size: 20px;
     user-select: none;
-    z-index: 1000;
-    animation: fall linear infinite;
+    z-index: 9999;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: snowfall linear infinite;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
+/* 雪花綜合動畫 - 下落+擺動+旋轉 */
+@keyframes snowfall {
+    0% {
+        transform: translateY(-50px) translateX(0) rotate(var(--rotation, 0deg));
+    }
+    25% {
+        transform: translateY(25vh) translateX(calc(var(--swing-distance, 30px) * 0.7)) rotate(calc(var(--rotation, 0deg) + 90deg));
+    }
+    50% {
+        transform: translateY(50vh) translateX(var(--swing-distance, 30px)) rotate(calc(var(--rotation, 0deg) + 180deg));
+    }
+    75% {
+        transform: translateY(75vh) translateX(calc(var(--swing-distance, 30px) * 0.3)) rotate(calc(var(--rotation, 0deg) + 270deg));
+    }
+    100% {
+        transform: translateY(150vh) translateX(0) rotate(calc(var(--rotation, 0deg) + 360deg));
     }
 }

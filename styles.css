@@ -392,6 +392,16 @@ img {
     /* 調整輪播區的 padding-top */
     .slideshow-container {
         padding-top: 44px; /* 手機版導覽列高度 (8px上下padding + 10px*2連結padding + 8px額外) */
+              height: 100vh; /* 讓輪播區高度佔滿視窗 */
+    }
+
+    .mySlides {
+        height: 100%; /* 讓幻燈片佔滿容器高度 */
+    }
+
+    .mySlides img {
+        height: 100%; /* 讓圖片佔滿幻燈片高度 */
+        object-fit: cover; /* 保持比例填滿，可能會裁切 */
     }
     
     /* 調整 scroll-padding-top */
